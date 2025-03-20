@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김준형 생일 축하해!</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffcccb;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 3rem;
+            margin-top: 50px;
+        }
+
+        .cake {
+            width: 200px;
+            margin: 20px auto;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #ff4081;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .message-box {
+            margin-top: 20px;
+        }
+
+        textarea, input {
+            width: 80%;
+            font-size: 1rem;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        .message-list {
+            margin-top: 20px;
+            text-align: left;
+            display: inline-block;
+            width: 80%;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 김준형 생일 축하해! 🎂</h1>
+    <img class="cake" src="https://cdn.pixabay.com/photo/2017/04/04/17/35/birthday-2203551_1280.png" alt="Birthday Cake">
+    <p>소원을 빌고 버튼을 눌러보세요!</p>
+    <button class="button" onclick="showMessage()">클릭!</button>
+    <div class="message-box">
+        <h2>🎁 축하 메시지를 남겨보세요!</h2>
+        <input type="text" id="nickname" placeholder="닉네임을 입력하세요">
+        <br>
+        <textarea id="message" placeholder="김준형에게 전할 생일 축하 메시지를 입력하세요!"></textarea>
+        <br>
+        <button class="button" onclick="saveMessage()">메시지 남기기</button>
+    </div>
+    <div class="message-list" id="messageList">
+        <h2>📜 축하 메시지 목록</h2>
+    </div>
+    <script>
+        function showMessage() {
+            alert("🎊 김준형 생일 축하해! 행복한 하루 보내!");
+        }
+        function saveMessage() {
+            let nickname = document.getElementById("nickname").value.trim();
+            let message = document.getElementById("message").value.trim();
+            if (nickname === "" || message === "") {
+                alert("닉네임과 메시지를 입력하세요!");
+                return;
+            }
+            let messageList = document.getElementById("messageList");
+            let newMessage = document.createElement("p");
+            newMessage.innerHTML = `<strong>${nickname}:</strong> ${message}`;
+            messageList.appendChild(newMessage);
+            document.getElementById("nickname").value = "";
+            document.getElementById("message").value = "";
+        }
+    </script>
+</body>
+</html>
